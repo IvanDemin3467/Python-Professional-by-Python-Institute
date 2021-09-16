@@ -35,13 +35,13 @@ Scenario
 
 •	the first time interval (fti) is ```hours=21, minutes=58, seconds=50```
 
-•	the second time interval (sti) is hours=1, minutes=45, seconds=22
+•	the second time interval (sti) is ```hours=1, minutes=45, seconds=22```
 
-•	the expected result of addition (fti + sti) is 23:44:12
+•	the expected result of addition (fti + sti) is ```23:44:12```
 
-•	the expected result of subtraction (fti - sti) is 20:13:28
+•	the expected result of subtraction (fti - sti) is ```20:13:28```
 
-•	the expected result of multiplication (fti * 2) is 43:57:40
+•	the expected result of multiplication (fti * 2) is ```43:57:40```
 
 **Hint #2**
 
