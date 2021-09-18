@@ -2,13 +2,18 @@ from __future__ import annotations
 from datetime import datetime
 
 
-def timestamp_decorator(given_function):
+class TimestampDecorator:
     """
-    Decorator that prints timestamp before decorated function run
-    :param given_function: a function to decorate
-    :return: decorated function
+    Decorator class that prints timestamp before decorated function run
     """
-    def internal_wrapper(*args, **kwargs):
+    def __init__(self, own_function):
+        """
+        Simple initialization
+        :param own_function: a function to decorate
+        """
+        self.func = own_function
+
+    def __call__(self, *args, **kwargs):
         """
         Prints timestamp and calls decorated function
         :param args: all position arguments of decorated function
@@ -20,12 +25,10 @@ def timestamp_decorator(given_function):
         # convert timestamp to human-readable string, following passed pattern:
         string_timestamp = timestamp.strftime("Timestamp: %Y-%m-%d %H:%M:%S")
         print(string_timestamp)
-        return given_function(*args, **kwargs)
-
-    return internal_wrapper
+        return self.func(*args, **kwargs)
 
 
-@timestamp_decorator
+@TimestampDecorator
 def adder(x: int | float, y: int | float) -> int | float:
     """
     Simple function that adds two numbers (int or float)
@@ -36,7 +39,7 @@ def adder(x: int | float, y: int | float) -> int | float:
     return x + y
 
 
-@timestamp_decorator
+@TimestampDecorator
 def multiplier(x: int | float, y: int | float) -> int | float:
     """
     Simple function that multiplies two numbers (int or float)
