@@ -1,38 +1,21 @@
-##2.2.1.6-Multiple-inheritance-LAB
+#2.4.1.7-Timestamping-logger-LAB
 
-**Estimated time**
+##Estimated time
 
-20 minutes
+15-30 minutes
 
-**Level of difficulty**
+##Level of difficulty
 
-Easy
+Medium
 
-**Objectives**
+##Objectives
 
-•	improving the student's skills in operating with multiple inheritance;
+•	Improving the student's skills in creating decorators and operating with them.
 
-•	pointing out the nature of multiple inheritance problems.
+##Scenario
 
-**Scenario**
+•	Create a function decorator that prints a timestamp (in a form like year-month-day hour:minute:seconds, e.g. 2019-11-05 08:33:22)
 
-•	Your task is to build a multifunction device (MFD) class consisting of methods responsible for document scanning, printing, and sending via fax.
+•	Create a few ordinary functions that do some simple tasks, like adding or multiplying two numbers.
 
-•	The methods are delivered by the following classes:
-
-    o	scan(), delivered by the Scanner class;
-    o	print(), delivered by the Printer class;
-    o	send() and print(), delivered by the Fax class.
-
-•	Each method should print a message indicating its purpose and origin, like:
-    
-    o	'print() method from Printer class'
-    o	'send() method from Fax class'
-
-•	create an MFD_SPF class ('SPF' means 'Scanner', 'Printer', 'Fax'), then instantiate it;
-
-•	create an MFD_SFP class ('SFP' means 'Scanner', 'Fax', 'Printer'), then instantiate it;
-
-•	on each object call the methods: scan(), print(), send();
-
-•	observe the output differences. Was the Printer class utilized each time?
+•	Apply your decorator to those functions to ensure that the time of the function executions can be monitored.
