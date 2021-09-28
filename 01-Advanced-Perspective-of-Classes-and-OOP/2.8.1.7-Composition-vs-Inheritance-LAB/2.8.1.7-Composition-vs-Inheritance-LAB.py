@@ -1,68 +1,57 @@
 class Tires:
     def __init__(self, size: int):
-        self.__pressure = 0.0
         self.size = size
+        self.pressure = 0
 
-    def get_pressure(self) -> float:
-        return self.__pressure
+    def get_pressure(self) -> int:
+        return self.pressure
 
-    def pump(self):
-        print("Pumping tires to 1.4 bar")
-        self.__pressure = 1.4
+    def pump(self, psi: int):
+        self.pressure = psi
 
 
 class Engine:
     def __init__(self, fuel_type: str):
         self.fuel_type = fuel_type
-        self.__state = "off"
+        self.state = 'off'
 
     def start(self):
-        self.__state = "on"
-        print(f"Engine with {self.fuel_type} fuel started")
+        self.state = 'on'
 
     def stop(self):
-        self.__state = "off"
-        print(f"Engine with {self.fuel_type} fuel stopped")
+        self.state = 'off'
 
-    def get_state(self):
-        print(f"The state of the engine with {self.fuel_type} fuel is {self.__state}")
+    def get_state(self) -> str:
+        return self.state
 
 
-class Vehicle:
-    def __init__(self, vin: int, engine: Engine, tires: Tires):
-        self.vin = vin
+class Car:
+    def __init__(self, vin: str, engine: Engine, tires: Tires):
+        self.VIN = vin
         self.engine = engine
         self.tires = tires
 
 
 if __name__ == "__main__":
-    # instantiate two sets of tires
-    city_tires = Tires(size=15)
-    off_road_tires = Tires(size=18)
-    # instantiate two engines
-    electric_engine = Engine("electric")
-    petrol_engine = Engine("petrol")
-    # instantiate two objects representing cars
-    city_car = Vehicle(vin=123456, engine=electric_engine, tires=city_tires)
-    all_terrain_car = Vehicle(vin=987654, engine=petrol_engine, tires=off_road_tires)
+    city_tires = Tires(15)
+    off_road_tires = Tires(18)
 
-    # calling methods responsible for interaction with components
-    print(city_car.engine.fuel_type)
-    city_car.engine.start()
-    city_car.engine.get_state()
-    city_car.engine.stop()
-    city_car.engine.get_state()
-    print(city_car.tires.size)
-    print(city_car.tires.get_pressure())
-    city_car.tires.pump()
-    print(city_car.tires.get_pressure())
+    electric_engine = Engine('electric')
+    petrol_engine = Engine('electric')
 
-    print(all_terrain_car.engine.fuel_type)
+    city_car = Car('111A', electric_engine, city_tires)
+    all_terrain_car = Car('888S', petrol_engine, off_road_tires)
+
+    # prepare all_terrain_car for a rally
+    print('All-terrain car engine is', all_terrain_car.engine.get_state())
+    all_terrain_car.tires.pump(10)
     all_terrain_car.engine.start()
-    all_terrain_car.engine.get_state()
-    all_terrain_car.engine.stop()
-    all_terrain_car.engine.get_state()
-    print(all_terrain_car.tires.size)
-    print(all_terrain_car.tires.get_pressure())
-    all_terrain_car.tires.pump()
-    print(all_terrain_car.tires.get_pressure())
+    print('All-terrain car engine is', all_terrain_car.engine.get_state())
+
+    # prepare city car for a shopping
+    print('City car engine is', city_car.engine.get_state())
+    city_car.tires.pump(3)
+    city_car.engine.start()
+    print('City car engine is', city_car.engine.get_state())
+    city_car.engine.stop()
+    print('City car engine is', city_car.engine.get_state())
